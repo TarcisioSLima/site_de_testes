@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  php:
+    container_name: "test_inserts"
+    image: php:8.1.16-apache
+    volumes:
+      - ./codigo/:/var/www/html/
+    ports:
+      - 820:80
+  db:
+    image: mariadb:10.5
+    container_name: 'db_teste'
+    restart:  always
+    environment:
+      - MARIADB_USER=root
+      - MARIADB_ROOT_PASSWORD=123
+  adminer:
+    image: adminer:4.8.1
+    container_name: "adminer_test_inserts"
+    restart: always
+    ports:
+      - 880:8080
